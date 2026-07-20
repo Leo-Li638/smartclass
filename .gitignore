@@ -1,0 +1,45 @@
+# ===== 构建产物 =====
+smartclass-backend/target/
+*.class
+*.jar
+!smartclass-backend/mvnw
+
+# ===== 前端依赖与构建 =====
+smartclass-frontend/node_modules/
+smartclass-frontend/dist/
+
+# ===== 本地 Maven 仓库(演示环境临时依赖缓存) =====
+.m2-repo/
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+
+# ===== 系统与日志 =====
+.DS_Store
+Thumbs.db
+*.log
+logs/
+
+# ===== 环境与敏感信息 =====
+*.env
+*.local
+smartclass-backend/src/main/resources/application-local.yml
+smartclass-backend/target/classes/application-local.yml
+
+# ===== IDE build 输出 / 备份 / 冲突文件 =====
+out/
+*.bak
+*.orig
+*.rej
+*.swp
+*~
+
+# ===== Maven Wrapper(若后续添加) =====
+!/.mvn/wrapper/maven-wrapper.jar
+
+# ===== 操作系统临时文件 =====
+Thumbs.db
+.DS_Store
+desktop.ini
