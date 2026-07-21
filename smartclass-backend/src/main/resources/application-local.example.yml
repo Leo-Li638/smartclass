@@ -1,0 +1,14 @@
+# 本地私密配置模板
+# 使用方法:复制本文件为同目录下的 application-local.yml,填入你本机的 MySQL 密码
+# application-local.yml 已被 .gitignore 忽略,不会被提交到仓库
+#
+# 也可以不创建该文件,改为设置环境变量 MYSQL_PASSWORD / MYSQL_USERNAME
+spring:
+  datasource:
+    password: 你的MySQL密码
+
+# JWT 签名密钥(不入库,不要用 application.yml 里的开发兜底值)
+# 生成方式: openssl rand -hex 32
+smartclass:
+  jwt:
+    secret: 换成你自己的随机长密钥

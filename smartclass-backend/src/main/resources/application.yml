@@ -1,0 +1,40 @@
+server:
+  port: 8091
+
+spring:
+  # 本地私密配置(数据库密码等)写在 application-local.yml,该文件不入库;
+  # 克隆项目后请复制 application-local.example.yml 为 application-local.yml 并修改密码
+  config:
+    import: optional:classpath:application-local.yml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smart_class?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+
+smartclass:
+  jwt:
+    # 密钥不入库:优先读环境变量 JWT_SECRET,兜底值仅供本地开发;
+    # 真实密钥写在 application-local.yml(已 gitignore)或环境变量中
+    secret: ${JWT_SECRET:dev-only-secret-do-not-use-in-production}
+    expire-hours: 24
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
